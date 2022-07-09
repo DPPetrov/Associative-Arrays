@@ -7,16 +7,28 @@ public class CountRealNumbers {
         Scanner sc = new Scanner(System.in);
 
         List<Double> numList = Arrays.stream(sc.nextLine().split(" ")).map(Double::parseDouble).collect(Collectors.toList());
+        //Създаваме Input
 
         Map<Double, Integer> countNumsMap = new TreeMap<>();
+        //Създаваме библиотека, която ще подрежда горния списък по възходящ ред
 
         for (double currentNum : numList){
+            //за да напълним празната библиотека, итерираме по списъка, за да "намерим" елементите
 
             if (countNumsMap.containsKey(currentNum)) {
+                //правим проверка, дали това, което търсим вече го има в новата библиотека
+                //търсим стойността - value, защото елементите, които намираме с цикъла ще са ключ - key
                 Integer currentValue = countNumsMap.get(currentNum);
+                //понеже int e първичен тип данни не съдържа "null" като стойност, а само нула (0), а Integer, като референтен тип го съдържа
+                //Това ни трябва, защото, ако използваме само int, ще върне грешка
                     countNumsMap.put(currentNum, currentValue + 1);
+                    //тъй като първоначално стойността на ключа не съществува, т.е е == 0, добавяме 1, за да има стойност.
+                    //Реално казваме, че към текущата стойност (value) на ключа ни, добавяме 1. По този начин броим и колко пъти се появява в
+                //библиотеката
             }else {
                 countNumsMap.put(currentNum, 1);
+                //Ако не съществува стойност, му задаваме първоначална стойност 1.
+                
             }
 
         }

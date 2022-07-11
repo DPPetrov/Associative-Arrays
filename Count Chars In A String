@@ -19,7 +19,7 @@ public class CountCharsInString {
         }
 
         for (Map.Entry<Character, Integer> entry : charCount.entrySet()) {
-            System.out.printf("%s - %d\n", entry.getKey(), entry.getValue());
+            System.out.printf("%s -> %d\n", entry.getKey(), entry.getValue());
         }
 
     }

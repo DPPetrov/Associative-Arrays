@@ -5,11 +5,11 @@ public class MinerTask {
         Scanner sc = new Scanner(System.in);
         String command = sc.nextLine();
 
+        Map<String, String> total = new LinkedHashMap<>();
 
         while (!command.equals("stop")){
-            String value = sc.nextLine();
 
-            List<String> total = new ArrayList<>();
+            String value = sc.nextLine();
 
             if (!total.containsKey(command)){
                 total.put(command, value);
@@ -19,5 +19,10 @@ public class MinerTask {
             command = sc.nextLine();
 
         }
+
+        for (Map.Entry<String, String> entry : total.entrySet()) {
+            System.out.printf("%s -> %s\n", entry.getKey(), entry.getValue());
+        }
+
     }
 }

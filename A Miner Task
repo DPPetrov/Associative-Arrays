@@ -3,24 +3,25 @@ import java.util.*;
 public class MinerTask {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String command = sc.nextLine();
+        String resource = sc.nextLine();
+        Map<String, Integer> total = new LinkedHashMap<>();
 
-        Map<String, String> total = new LinkedHashMap<>();
 
-        while (!command.equals("stop")){
+        while (!resource.equals("stop")){
 
-            String value = sc.nextLine();
+            int quantity = Integer.parseInt(sc.nextLine());
 
-            if (!total.containsKey(command)){
-                total.put(command, value);
+            if (!total.containsKey(resource)){
+                total.put(resource, quantity);
+            }else{
+                int currentQuantity = total.get(resource);
+                total.put(resource, currentQuantity + quantity);
             }
-           
-
-            command = sc.nextLine();
-
+            resource = sc.nextLine();
+            System.out.println();
         }
 
-        for (Map.Entry<String, String> entry : total.entrySet()) {
+        for (Map.Entry<String, Integer> entry : total.entrySet()) {
             System.out.printf("%s -> %s\n", entry.getKey(), entry.getValue());
         }
 

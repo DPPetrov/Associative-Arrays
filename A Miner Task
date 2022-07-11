@@ -14,7 +14,7 @@ public class MinerTask {
             if (!total.containsKey(command)){
                 total.put(command, value);
             }
-            System.out.println();
+           
 
             command = sc.nextLine();
 

@@ -10,7 +10,11 @@ public class CountCharsInString {
         Map<Character, Integer> charCount = new LinkedHashMap<>();
         for(char chars : words){
 
+            if (chars == ' '){
+                continue;
+            }
             if (!charCount.containsKey(chars)){
+
                 charCount.put(chars, 1);
             }else{
                 Integer value = charCount.get(chars);

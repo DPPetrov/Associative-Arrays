@@ -1,20 +1,63 @@
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Scanner;
-
+import java.util.*;
 public class LegendaryFarming {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
 
-        String[] input = sc.nextLine().split(" ");
-        Map<Integer, String> shadowmourne = new LinkedHashMap<>();
-        Map<Integer, String> valanyr = new LinkedHashMap<>();
-        Map<Integer, String> dragonwrath = new LinkedHashMap<>();
-        Map<Integer, String> junk = new LinkedHashMap<>();
-        
-        for (int i = 0; i < input.length; i++) {
-            int quantity = Integer.parseInt(input[0]);
-            String material = input[1].toLowerCase();
-        }
+        Map<String, Integer> items = new LinkedHashMap<>();
+        items.put("shards", 0);
+        items.put("motes", 0);
+        items.put("fragments", 0);
+
+        Map<String, Integer> junkItems = new LinkedHashMap<>();
+
+        Scanner sc = new Scanner(System.in);
+        boolean isComplete = false;
+
+            while (!isComplete) {
+                String input = sc.nextLine();
+                String[] itemsInput = input.split(" ");
+                for (int i = 0; i < itemsInput.length; i += 2) {
+                    int quantity = Integer.parseInt(itemsInput[i]);
+                    String material = itemsInput[i + 1].toLowerCase();
+
+                    if (material.equals("shards") || material.equals("motes") || material.equals("fragments")) {
+                        int currentQuantity = items.get(material);
+                        items.put(material, quantity + currentQuantity);
+                    } else {
+                        if (!junkItems.containsKey(material)) {
+                            junkItems.put(material, quantity);
+                        } else {
+                            int current = junkItems.get(material); //взема текущата цифрена стойност на "material"
+                            junkItems.put(material, current + quantity);
+                        }
+                    }
+
+                    if (items.get("shards") >= 250){
+                        System.out.println("Shadowmourne obtained!");
+                        items.put("shards", (items.get("shards") - 250));
+                        isComplete = true;
+                        break;
+
+                    }else if (items.get("motes") >= 250){
+                        System.out.println("Dragonwrath obtained!");
+                        items.put("motes", (items.get("motes") - 250));
+                        isComplete = true;
+                        break;
+
+                    }else if(items.get("fragments") >= 250){
+                        System.out.println("Valanyr obtained!");
+                        items.put("fragments", items.get("fragments") - 250);
+                        isComplete = true;
+                        break;
+
+                    }
+                }
+
+                if (isComplete){
+                    break;
+                }
+            }
+
+        items.entrySet().forEach(entry -> System.out.println(entry.getKey() + ": " + entry.getValue()));
+        junkItems.entrySet().forEach(entry -> System.out.println(entry.getKey() + ": " + entry.getValue()));
     }
 }

@@ -1,0 +1,36 @@
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class Courses {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String command = sc.nextLine();
+        Map<String,String> courses = new LinkedHashMap<>();
+        Map<String, Integer> courseCount = new LinkedHashMap<>();
+        int counter = 0;
+
+        while (!command.equals("end")){
+            String courseName = command.split("\\s+:\\s+")[0];
+            String username = command.split("\\s+:\\s+")[1];
+
+            courseCount.put(courseName, counter);
+
+            if (!courses.containsKey(courseName)){
+                courses.put(courseName, username);
+                counter++;
+            }else{
+                courses.put(courseName, username);
+                counter++;
+            }
+            command = sc.nextLine();
+        }
+
+        for(Map.Entry<String, Integer> el : courseCount.entrySet()){
+            System.out.printf("%s: %d\n", el.getKey(), el.getValue());
+            for (Map.Entry<String, String> entry : courses.entrySet()){
+                System.out.printf("-- %s\n", entry.getValue());
+            }
+        }
+    }
+}

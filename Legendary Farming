@@ -4,8 +4,8 @@ public class LegendaryFarming {
 
         Map<String, Integer> items = new LinkedHashMap<>();
         items.put("shards", 0);
-        items.put("motes", 0);
         items.put("fragments", 0);
+        items.put("motes", 0);
 
         Map<String, Integer> junkItems = new LinkedHashMap<>();
 

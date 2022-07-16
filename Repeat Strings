@@ -1,0 +1,27 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class RepeatStrings1 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String[] words = sc.nextLine().split(" ");
+        List<String> wordsResult = new ArrayList<>();
+
+        for (int i = 0; i < words.length; i++) {
+
+            String word = words[i];
+            int n = word.length();
+
+            for (int j = 1; j <= n; j++) {
+
+                wordsResult.add(word);
+            }
+        }
+
+        for(String el : wordsResult){
+            System.out.print(String.join("", el));
+        }
+    }
+}

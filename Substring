@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+public class Substring {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String keyWord = sc.nextLine(); //ice
+        String words = sc.nextLine();  //k ice g ic ice eb
+        int n = words.indexOf(keyWord);
+        
+//        Когато намери индекс на търсената дума, то ще намери първата буква, ако е дума 
+//        и ще отчете всяко срещане на тази буква като отделен индекс, без значение, дали
+//                ще има нещо след нея
+                
+
+        while (n != -1){
+
+            words = words.replace(keyWord, "");
+            n = words.indexOf(keyWord);
+        }
+
+        System.out.println(words);
+    }
+}

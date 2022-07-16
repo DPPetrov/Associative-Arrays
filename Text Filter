@@ -1,0 +1,27 @@
+import java.util.Scanner;
+
+public class WordsFilter {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String[] bannWords = sc.nextLine().split(", ");
+        String text = sc.nextLine();
+
+        for(String el : bannWords){
+            if (text.contains(el)){
+                text = text.replace(el, repeatStr("*", el.length()));
+            }
+        }
+
+        System.out.println(text);
+    }
+
+    public static String repeatStr(String word, int length){
+        String temp = "";
+        for (int i = 0; i < length; i++) {
+            temp += word;
+        }
+
+        return temp;
+    }
+}

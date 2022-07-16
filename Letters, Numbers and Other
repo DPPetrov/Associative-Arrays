@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+public class DigitsLettersAndOthers {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String input = sc.nextLine();
+
+       StringBuilder sbDigit = new StringBuilder();
+       StringBuilder sbLetter = new StringBuilder();
+       StringBuilder sbChar = new StringBuilder();
+
+        for (int i = 0; i < input.length(); i++) {
+            char symbol = input.charAt(i);
+
+            if (Character.isDigit(symbol)){
+                sbDigit.append(symbol);
+            }else if (Character.isLetter(symbol)){
+                sbLetter.append(symbol);
+            }else{
+                sbChar.append(symbol);
+            }
+
+
+        }
+
+        System.out.println(sbDigit);
+        System.out.println(sbLetter);
+        System.out.println(sbChar);
+    }
+}

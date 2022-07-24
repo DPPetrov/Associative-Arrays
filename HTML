@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class HTML {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String input = sc.nextLine();
+
+
+        boolean hasTitle = false;
+        boolean hasBody = false;
+
+
+        while (!input.equals("end of comments")){
+
+            if (!hasTitle){
+                System.out.printf("<h1>\n   %s\n</h1>\n", input);
+                hasTitle = true;
+                input = sc.nextLine();
+                continue;
+            }else if (!hasBody){
+                System.out.printf("<article>\n  %s\n</article>\n", input);
+                hasBody = true;
+                input = sc.nextLine();
+                continue;
+            }
+            System.out.printf("<div>\n  %s\n</div>\n",input);
+            input = sc.nextLine();
+
+
+        }
+    }
+}

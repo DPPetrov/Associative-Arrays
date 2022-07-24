@@ -1,0 +1,44 @@
+import java.util.Scanner;
+
+public class LettersChangeNumbers {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String[] input = sc.nextLine().split("\\s+");
+
+        double sum = 0;
+
+        for (String el : input) {
+
+            double number = modifiedNumber(el);
+
+            sum += number;
+        }
+
+        System.out.printf("%.2f", sum);
+    }
+
+    public static Double modifiedNumber (String el){
+        char firstLetter = el.charAt(0);
+        char secondLetter = el.charAt(el.length()-1);
+
+        double num = Double.parseDouble(el.replace(firstLetter, ' ').replace(secondLetter, ' ').trim());
+
+
+        if (Character.isUpperCase(firstLetter)){
+            int letterPositionUpper = (int) firstLetter - 64;
+            num /= letterPositionUpper;
+        }else{
+            int letterPositionLower = (int) firstLetter - 96;
+            num *= letterPositionLower;
+        }
+
+        if (Character.isUpperCase(secondLetter)){
+            int letterPositionUpper = (int) secondLetter - 64;
+            num -= letterPositionUpper;
+        }else{
+            int letterPositionLowe = (int) secondLetter - 96;
+            num += letterPositionLowe;
+        }
+        return num;
+    }
+}
